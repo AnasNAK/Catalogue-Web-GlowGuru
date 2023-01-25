@@ -9,14 +9,14 @@ class Products extends Controller
     {
         if (!isLoggedIn()) {
 
-            redirect('/user/login');
+            redirect('users/login');
         }
         $this->productModel = $this->model('Product');
     }
-    
+
     public function add()
     {
-        
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             var_dump($_FILES);
@@ -25,9 +25,9 @@ class Products extends Controller
             for ($i = 0; $i < $count; $i++) {
                 // sanitize post array
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    
+
                 move_uploaded_file($_FILES['image']['tmp_name'][$i], 'img/upload/' . $_FILES['image']['name'][$i]);
-    
+
                 $data = [
                     'name' => $_POST['name'][$i],
                     'stock' => $_POST['stock'][$i],
@@ -35,8 +35,8 @@ class Products extends Controller
                     'description' => $_POST['description'][$i],
                     'image' => $_FILES['image']['name'][$i]
                 ];
-    
-                
+
+
                 //make sure no errors
                 if ($this->productModel->addProduct($data)) {
                     redirect('Products/dashboardAdmin');
@@ -61,11 +61,11 @@ class Products extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // sanitize post array
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+
             move_uploaded_file($_FILES['image']['tmp_name'], 'img/upload/' . $_FILES['image']['name']);
 
-            $product =$this->productModel->findproductById($id);
+            $product = $this->productModel->findproductById($id);
 
             if (empty($_FILES['image']['name'])) {
                 $data = [
@@ -96,7 +96,7 @@ class Products extends Controller
                     'image_err' => ''
                 ];
             }
- 
+
             //validate form
             if (empty($data['name'])) {
                 $data['name_err'] = 'Please enter name';
@@ -123,8 +123,7 @@ class Products extends Controller
                 $this->view('product/editProduct', $data);
             }
         } else {
-            $product =$this->productModel->findproductById($id);
-       
+            $product = $this->productModel->findproductById($id);
         }
         $data = [
             'id' => $product->id,
@@ -144,26 +143,22 @@ class Products extends Controller
     }
     public function dashboardAdmin()
     {
-        $products= $this->productModel->getProduct();
+        $products = $this->productModel->getProduct();
+         $productsum=$this->productModel->getProductByStock();
         $data = [
-        'products' => $products,
+            'products' => $products,
+            'productsum' =>$productsum,
         ];
         $this->view('inc/dashboardAdmin', $data);
     }
-    public function delete($id) {
+    public function delete($id)
+    {
         // get response from data if deleted or not return true or false
         if ($this->productModel->delet($id)) {
-            redirect('products/dashboardAdmin');
+            redirect('Products/dashboardAdmin');
         } else {
             die('ops');
         }
     }
-    public function dashboardAdminsum()
-    {
-        $products= $this->productModel->getProductByStock();
-        $data = [
-        'productsum' => $products,
-        ];
-       var_dump($data);
-    }
+
 }
