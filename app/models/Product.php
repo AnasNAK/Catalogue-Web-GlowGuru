@@ -58,7 +58,7 @@ class Product
         }
     }
     public function delet($id) {
-        $this->db->query("DELETE FROM product    WHERE id = :id");
+        $this->db->query("DELETE FROM product WHERE id = :id");
         $this->db->bind(':id', $id);
         if ($this->db->execute()) {
             return true;
@@ -68,9 +68,9 @@ class Product
     }
     public function getProductByStock()
     {
-        $this->db->query('SELECT SUM(stock) FROM product');
+        $this->db->query('SELECT SUM(stock) as "sum" FROM product');
 
-        $result = $this->db->resultset();
+        $result = $this->db->single();
         return $result;
     }
 
