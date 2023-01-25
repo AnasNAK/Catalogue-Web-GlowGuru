@@ -57,7 +57,7 @@
                             <div class="flex text-sm">
                                 <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium  hover:text-blue-300  ">
                                     <span class="">Upload a file</span>
-                                    <input id="file-upload" name="image[]" type="file" value="<?= $data['image'] ?>" class="sr-only ">
+                                    <input id="file-upload" name="image" type="file" value="<?= $data['image'] ?>" class="sr-only ">
 
                                 </label>
                                 <p class="pl-1">or drag and drop</p>
