@@ -8,6 +8,19 @@ class Admin
   {
     $this->db = new Database();
   }
+  public function checkEmail($email) {
+    $this->db->query('SELECT * FROM admin WHERE email = :email');
+    $this->db->bind(':email', $email);
+
+    $row = $this->db->single();
+
+    if ($this->db->execute()) {
+      return $row;
+    } else {
+      return false;
+    }
+
+  }
   //login admin 
   public function login($email, $password)
   {
@@ -17,7 +30,7 @@ class Admin
     $row = $this->db->single();
 
     $hashed_password = $row->password;
-    if (password_verify($password, $hashed_password)) {
+    if (sha1($password) === $hashed_password) {
       return $row;
     } else {
       return false;
