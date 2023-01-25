@@ -45,10 +45,15 @@
             </div>
 
             <div class="flex justify-between mt-6">
-                <div>
+                <div class="flex gap-6">
                     <button type="submit" class="px-6 py-2 leading-5 transform rounded-md focus:outline-none font-bold bg-[#FFF8ED] transition hover:bg-[#685942] hover:text-[#FFF2DF]">
                         Save
                     </button>
+                   <a href="<?= URLROOT ?>/products/dashboardAdmin">
+                   <button type="button" class="px-6 py-2 leading-5 transform rounded-md focus:outline-none font-bold bg-[#FFF8ED] transition hover:bg-[#685942] hover:text-[#FFF2DF]">
+                        Cancel
+                    </button>
+                   </a>
                 </div>
                 <div>
                     <button id="oneMore" class="px-6 py-2 leading-5 transform rounded-md focus:outline-none font-bold bg-[#FFF8ED] transition hover:bg-[#685942] hover:text-[#FFF2DF]">
