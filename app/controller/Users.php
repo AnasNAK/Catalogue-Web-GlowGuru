@@ -6,6 +6,9 @@ class Users extends Controller
     private $userModel;
     public function __construct()
     {
+        if (isLoggedIn()) {
+            redirect('Products/dashboardAdmin');
+        }
         $this->userModel = $this->model('Admin');
     }
     public function register()
@@ -55,12 +58,15 @@ class Users extends Controller
             if (empty($data['password'])) {
                 $data['password_err'] = 'please enter password';
             }
+            if (!$this->userModel->checkEmail($data['email'])) {
+                $data['email_err'] = 'User Not Found';
+            }
             //make sure errors are empty
             if (empty($data['email_err']) && empty($data['password_err'])) {
 
                 //validated
                 //check and set logged in user
-                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+                $loggedInUser = $this->userModel->login($data['email'],$data['password']);
 
                 if ($loggedInUser) {
                     //creat a session 
@@ -95,7 +101,8 @@ class Users extends Controller
         $_SESSION['user_email'] = $user->email;
         redirect('product');
     }
-    public function logout(){
+    public function logout()
+    {
         unset($_SESSION['user_id']);
         unset($_SESSION['user_email']);
         session_destroy();
