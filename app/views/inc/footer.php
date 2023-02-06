@@ -10,7 +10,7 @@
           Created with NAK
         </p>
         <div class="mt-6 flex justify-center gap-4 lg:justify-center">
-          <a class="text-gray-700 transition hover:text-gray-700/75" href="" target="_blank" rel="noreferrer">
+          <a class="text-gray-700 transition hover:text-gray-700/75" href="https://www.facebook.com/Anas.NAK.07/" target="_blank" rel="noreferrer">
             <span class="sr-only"> Facebook </span>
 
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -20,7 +20,7 @@
             </svg>
           </a>
 
-          <a class="text-gray-700 transition hover:text-gray-700/75" href="" target="_blank" rel="noreferrer">
+          <a class="text-gray-700 transition hover:text-gray-700/75" href="https://www.instagram.com/anas__nak/" target="_blank" rel="noreferrer">
             <span class="sr-only"> Instagram </span>
 
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -30,7 +30,7 @@
             </svg>
           </a>
 
-          <a class="text-gray-700 transition hover:text-gray-700/75" href="" target="_blank" rel="noreferrer">
+          <a class="text-gray-700 transition hover:text-gray-700/75" href="https://twitter.com/anas_nak" target="_blank" rel="noreferrer">
             <span class="sr-only"> Twitter </span>
 
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -39,7 +39,7 @@
             </svg>
           </a>
 
-          <a class="text-gray-700 transition hover:text-gray-700/75" href="" target="_blank" rel="noreferrer">
+          <a class="text-gray-700 transition hover:text-gray-700/75" href="https://github.com/AnasNAK" target="_blank" rel="noreferrer">
             <span class="sr-only"> GitHub </span>
 
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
